@@ -1,0 +1,94 @@
+﻿<Window x:Class="CoolQManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CoolQManager"
+        mc:Ignorable="d"
+        Title="酷Q TCP通讯接口 测试" Height="617" Width="1164"
+        Loaded="Window_Loaded"
+        Unloaded="Window_Unloaded"
+        >
+    <DockPanel>
+        <DockPanel Margin="3" >
+            <GroupBox Margin="3" Padding="3" DockPanel.Dock="Top" MinWidth="200" >
+                <GroupBox.Header>
+                    <TextBlock Margin="3" Padding="3" Text="功能测试"/>
+                </GroupBox.Header>
+                <DockPanel>
+                    <DockPanel DockPanel.Dock="Top">
+                        <TextBlock Margin="3" Padding="3" DockPanel.Dock="Left" Text="选择QQ："/>
+                        <ComboBox Margin="3" Padding="3" >
+                            <ComboBoxItem Content="20995658"/>
+                            <ComboBoxItem Content="12345678"/>
+                        </ComboBox>
+                    </DockPanel>
+                    <TreeView/>
+                </DockPanel>
+            </GroupBox>
+        </DockPanel>
+        <DockPanel Margin="3">
+            <DockPanel DockPanel.Dock="Left">
+            <GroupBox Margin="3" Padding="3" DockPanel.Dock="Top" MinWidth="200">
+                <GroupBox.Header>
+                    <TextBlock Margin="3" Padding="3" Text="管理端配置"/>
+                </GroupBox.Header>
+                <StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="18*"/>
+                            <ColumnDefinition Width="73*"/>
+                            <ColumnDefinition Width="91*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock  Margin="3" Padding="3" Grid.Row="0" Grid.Column="0" Text="通讯端口：" Grid.ColumnSpan="2"/>
+                        <TextBox x:Name="tb_ServicePort"  Margin="3" Padding="3"  Grid.Row="0" Grid.Column="2" Text="8421" TextChanged="tb_ServicePort_TextChanged"/>
+                        <TextBlock  Margin="3" Padding="3" Grid.Row="1" Grid.Column="0" Text="通讯密钥：" Grid.ColumnSpan="2"/>
+                        <TextBox x:Name="tb_CommunicationKey"  Margin="3" Padding="3" Grid.Row="1" Grid.Column="2" Text="MyKey" TextChanged="tb_CommunicationKey_TextChanged"/>
+                        <TextBlock  Margin="3" Padding="3" Grid.Row="2" Grid.Column="0" Text="启用SSL：" Grid.ColumnSpan="2"/>
+                        <CheckBox x:Name="cb_IsSslEnabled"  Margin="3" Padding="3" Grid.Row="2" Grid.Column="2"  Content="启用" VerticalContentAlignment="Center" Checked="cb_IsSslEnabled_Checked"/>
+                        <TextBlock  Margin="3" Padding="3" Grid.Row="3" Grid.Column="0" Text="发送文件：" Grid.ColumnSpan="2"/>
+                        <ComboBox x:Name="cb_IsFileSplited"  Margin="3" Padding="3" Grid.Row="3" Grid.Column="2" SelectionChanged="cb_IsFileSplited_SelectionChanged">
+                            <ComboBoxItem Content="分包发送"/>
+                            <ComboBoxItem Content="单一发送"/>
+                        </ComboBox>
+                        <Button x:Name="bt_ConfigTest" Margin="3" Padding="3" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Content="连接测试" Click="bt_ConnectTest_Click"/>
+                        <Button x:Name="bt_ConfigSave" Margin="3" Padding="3" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Content="保存配置" Click="bt_ConfigSave_Click"/>
+                    </Grid>
+                </StackPanel>
+            </GroupBox>
+                <GroupBox Margin="3" Padding="3">
+                    <GroupBox.Header>
+                        <TextBlock Margin="3" Padding="3" Text="参数配置"/>
+                    </GroupBox.Header>
+                    <Frame Margin="3" Padding="3"/>
+                </GroupBox>
+            </DockPanel>
+            <Grid Margin="3" DockPanel.Dock="Bottom">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <GroupBox Margin="3" Padding="3"  Grid.Column="0">
+                    <GroupBox.Header>
+                        <TextBlock Margin="3" Padding="3" Text="收到的客户端请求"/>
+                    </GroupBox.Header>
+                    <TextBox x:Name="tb_ReceivedMsg"  Margin="3" Padding="3" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" AcceptsTab="True" />
+                </GroupBox>
+                <GroupBox Margin="3" Padding="3" Grid.Column="1">
+                    <GroupBox.Header>
+                        <TextBlock Margin="3" Padding="3" Text="管理端的主动请求"/>
+                    </GroupBox.Header>
+                    <TextBox x:Name="tb_SentMsg" Margin="3" Padding="3" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" AcceptsTab="True" />
+                </GroupBox>
+            </Grid>
+        </DockPanel>
+    </DockPanel>
+</Window>
